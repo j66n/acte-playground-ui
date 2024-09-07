@@ -1,4 +1,4 @@
-import {createMemo} from "solid-js";
+import {createMemo, Show} from "solid-js";
 
 function Screen(props) {
     const parser = new DOMParser()
@@ -68,7 +68,7 @@ function Screen(props) {
                 type="button"
                 class="
                 bg-[radial-gradient(circle,_#D1D5DB_1px,_transparent_1px)] bg-[size:3px_3px] whitespace-normal break-words
-                rounded-xl border-2 border-gray-500 px-3 py-2 text-base text-gray-800 font-semibold hover:bg-gray-300 w-full min-h-12
+                rounded-xl border-2 border-gray-500 px-3 py-2 text-base hover:bg-gray-300 w-full min-h-12
                 "
                 onClick={
                     () => props.execute(
@@ -77,7 +77,15 @@ function Screen(props) {
                     )
                 }
             >
-                {buttonDom.innerText}
+                <span class="text-gray-800 font-semibold">
+                    {buttonDom.innerText}
+                </span>
+
+                <Show when={buttonDom.title != null}>
+                    <div class="text-xs text-gray-500">
+                        {buttonDom.title}
+                    </div>
+                </Show>
             </button>
             <span
                 class="absolute -top-2 -right-2 flex h-6 w-6 items-center justify-center rounded-full border-2 border-gray-500 bg-white text-xs font-semibold text-gray-800">
@@ -108,6 +116,13 @@ function Screen(props) {
                         }
                     </span>
                 </div>
+
+                <Show when={inputDom.title != null}>
+                    <div class="text-xs text-gray-400">
+                        {inputDom.title}
+                    </div>
+                </Show>
+
 
                 <div class="
                     whitespace-pre-wrap

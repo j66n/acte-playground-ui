@@ -97,7 +97,15 @@ function Screen(props) {
                         {inputDom.name}
                     </span>
                     <span class="text-xs text-gray-500">
-                        {inputDom.type}
+                        {
+                            inputDom.type
+                        }
+                        {
+                            inputDom.type === "number" && inputDom.step === "any" ? "(float)" : ""
+                        }
+                        {
+                            inputDom.type === "number" && inputDom.step === "1" ? "(int)" : ""
+                        }
                     </span>
                 </div>
 
@@ -160,7 +168,7 @@ function Screen(props) {
 
                 {
                     screenObj().hasOwnProperty('screen') ?
-                        <div class="flex-1 overflow-y-auto scrollbar-rounded py-2 px-4 text-center ${}">
+                        <div class="flex-1 overflow-y-auto scrollbar-rounded py-2 px-4 text-center">
                             {screenObj().screen}
                         </div>
                         :

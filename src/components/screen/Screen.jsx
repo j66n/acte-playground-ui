@@ -143,7 +143,7 @@ function Screen(props) {
                              const actions = []
 
                              actions.push({
-                                 action_type: "fill",
+                                 action_type: "set",
                                  target_id: inputDom.id,
                                  value: newValue
                              })

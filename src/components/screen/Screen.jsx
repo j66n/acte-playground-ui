@@ -63,6 +63,8 @@ function Screen(props) {
 
 
     const buildButton = (buttonDom) => {
+        const hint = buttonDom.getAttribute('hint')
+
         return <div class="relative my-2 inline-block w-full">
             <button
                 type="button"
@@ -81,9 +83,9 @@ function Screen(props) {
                     {buttonDom.innerText}
                 </span>
 
-                <Show when={buttonDom.title != null}>
+                <Show when={hint != null}>
                     <div class="text-xs text-gray-500">
-                        {buttonDom.title}
+                        {hint}
                     </div>
                 </Show>
             </button>
@@ -96,6 +98,11 @@ function Screen(props) {
 
     const _buildInput = (inputDom) => {
         let preValue = inputDom.getAttribute('value')
+
+        const hint = inputDom.getAttribute('hint')
+        const kind = inputDom.getAttribute('kind')
+
+
         return <div class="relative my-2 inline-block w-full text-left">
             <div class="
                 px-3 py-2 border-2 border-gray-500 rounded-xl max-h-48 overflow-auto scrollbar-rounded
@@ -105,21 +112,13 @@ function Screen(props) {
                         {inputDom.name}
                     </span>
                     <span class="text-xs text-gray-500">
-                        {
-                            inputDom.type
-                        }
-                        {
-                            inputDom.type === "number" && inputDom.step === "any" ? "(float)" : ""
-                        }
-                        {
-                            inputDom.type === "number" && inputDom.step === "1" ? "(int)" : ""
-                        }
+                        {kind}
                     </span>
                 </div>
 
-                <Show when={inputDom.title != null}>
+                <Show when={hint != null}>
                     <div class="text-xs text-gray-400">
-                        {inputDom.title}
+                        {hint}
                     </div>
                 </Show>
 

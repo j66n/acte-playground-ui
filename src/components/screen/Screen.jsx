@@ -63,7 +63,7 @@ function Screen(props) {
 
 
     const buildButton = (buttonDom) => {
-        const hint = buttonDom.getAttribute('hint')
+        const schema = buttonDom.getAttribute('schema')
 
         return <div class="relative my-2 inline-block w-full">
             <button
@@ -83,9 +83,9 @@ function Screen(props) {
                     {buttonDom.innerText}
                 </span>
 
-                <Show when={hint != null}>
+                <Show when={schema != null}>
                     <div class="text-xs text-gray-500">
-                        {hint}
+                        {schema}
                     </div>
                 </Show>
             </button>
@@ -99,8 +99,7 @@ function Screen(props) {
     const _buildInput = (inputDom) => {
         let preValue = inputDom.getAttribute('value')
 
-        const hint = inputDom.getAttribute('hint')
-        const kind = inputDom.getAttribute('kind')
+        const schema = inputDom.getAttribute('schema')
 
 
         return <div class="relative my-2 inline-block w-full text-left">
@@ -111,14 +110,11 @@ function Screen(props) {
                     <span class="pb-1 text-base font-semibold text-gray-800">
                         {inputDom.name}
                     </span>
-                    <span class="text-xs text-gray-500">
-                        {kind}
-                    </span>
                 </div>
 
-                <Show when={hint != null}>
+                <Show when={schema != null}>
                     <div class="text-xs text-gray-400">
-                        {hint}
+                        {schema}
                     </div>
                 </Show>
 

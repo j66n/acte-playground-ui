@@ -164,6 +164,8 @@ class Manager {
                     const args = tool_call.function.arguments
                     const type = tool_call.type
 
+                    console.log(funcName)
+
                     this._setMessagesAndScrollDown(prev => {
                         const lastMsg = prev[prev.length - 1]
 
@@ -179,7 +181,7 @@ class Manager {
                             lastMsg.tool_calls[0].id = tool_call_id
                         }
 
-                        if (funcName != null) {
+                        if (funcName != null && funcName !== '') {
                             lastMsg.tool_calls[0].function = {name: funcName}
                         }
 
